@@ -116,11 +116,11 @@ Option    Value
 [`--auditPath`](../../reference/program/mongod/#cmdoption-mongod-auditpath) The output filename. Accepts either the full path name or relative path name.
 
 选项 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;值 
-___
+------
 [`--auditDestination`](../../reference/program/mongod/#cmdoption-mongod-auditdestination) &emsp;&emsp;`file`
-___
+------
 [`--auditFormat`](../../reference/program/mongod/#cmdoption-mongod-auditformat)&emsp;&emsp;&emsp;&emsp;&emsp;`JSON`
-___
+------
 [`--auditPath`](../../reference/program/mongod/#cmdoption-mongod-auditpath) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;输出文件名，接受完整路径名或相对路径名。
 
 
@@ -173,11 +173,11 @@ Option  Value
 [`--auditPath`](../../reference/program/mongod/#cmdoption-mongod-auditpath)  The output filename. Accepts either the full path name or relative path name.
 
 选项 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;值 
-___
+------
 [`--auditDestination`](../../reference/program/mongod/#cmdoption-mongod-auditdestination) &emsp;&emsp;`file`
-___
+------
 [`--auditFormat`](../../reference/program/mongod/#cmdoption-mongod-auditformat)&emsp;&emsp;&emsp;&emsp;&emsp;`BSON`
-___
+------
 [`--auditPath`](../../reference/program/mongod/#cmdoption-mongod-auditpath) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 输出文件名，接受完整路径名或相对路径名。
 
 
