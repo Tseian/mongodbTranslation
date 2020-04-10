@@ -1,11 +1,10 @@
 # Auditing[](https://docs.mongodb.com/manual/core/auditing/)
 # 审计
 On this page
-
+在本页
 - [Enable and Configure Audit Output]启用和配置审计输出(https://docs.mongodb.com/manual/core/auditing/#enable-and-configure-audit-output)
 - [Audit Events and Filter]审计事件和过滤器(https://docs.mongodb.com/manual/core/auditing/#audit-events-and-filter)
-- [Audit Guarantee]审计保证
-(https://docs.mongodb.com/manual/core/auditing/#audit-guarantee)
+- [Audit Guarantee]审计保证 (https://docs.mongodb.com/manual/core/auditing/#audit-guarantee)
 
 MongoDB Enterprise includes an auditing capability for mongod and mongos instances. The auditing facility allows administrators and users to track system activity for deployments with multiple users and applications.
 MongoDB 企业版包含针对 mongod 和 mongos 实例的审计功能 。审计功能使管理员和用户可以跟踪具有多个用户和多个客户端应用的 mongodb 的运行情况。
@@ -22,7 +21,7 @@ For information on the audit log messages, see System Event Audit Messages.
 ## Audit Events and Filter[](https://docs.mongodb.com/manual/core/auditing/#audit-events-and-filter)
 ## 审计事件和过滤器
 Once enabled, the auditing system can record the following operations [1]:
-启用后，审计系统可以记录以下操作[1]:
+启用审计功能后，审计系统可以记录以下操作[1]:
 
 - schema (DDL),
 - replica set and sharded cluster,
@@ -38,10 +37,10 @@ For details on audited actions, see Audit Event Actions, Details, and Results.
 有关审计的操作的详细信息，请参阅[审计事件操作，详细信息和结果](https://docs.mongodb.com/manual/reference/audit-message/#audit-action-details-results)。
 
 With the auditing system, you can set up filters to restrict the events captured. To set up filters, see Configure Audit Filters.
-使用审计系统，您可以[设置过滤器](https://docs.mongodb.com/manual/tutorial/configure-audit-filters/#audit-filter)以限制捕获的事件。要设置过滤器，请参阅[“配置审计过滤器”](https://docs.mongodb.com/manual/tutorial/configure-audit-filters/)。
+使用审计系统，您可以[设置过滤器](https://docs.mongodb.com/manual/tutorial/configure-audit-filters/#audit-filter)以限制捕获的事件。设置过滤器，请参阅[“配置审计过滤器”](https://docs.mongodb.com/manual/tutorial/configure-audit-filters/)。
 
 [1]	Operations in an aborted transaction still generate audit events. However, there is no audit event that indicates that the transaction aborted.
-在一个被中止的事务中[1]中的操作任然会生成一个审计事件，但是没有一个审计事件指示事务被中止了。
+在一个被中止的事务中,列表[1]中的操作任然会生成一个审计事件，但是没有一个审计事件指示事务被中止了。
 
 ## Audit Guarantee[](https://docs.mongodb.com/manual/core/auditing/#audit-guarantee)
 ## 审计保证

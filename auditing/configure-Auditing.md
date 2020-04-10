@@ -2,7 +2,7 @@
 # 配置审计
 
 On this page
-在本页里
+在本页
 *   [Enable and Configure Audit Output]启用和配置审计输出(#enable-and-configure-audit-output)
 *   [启用和配置审计输出](#enable-and-configure-audit-output)
 
@@ -23,7 +23,7 @@ A complete auditing solution must involve **all** [`mongod`](../../reference/pro
 完整的审计解决方案必须涉及所有 [`mongod`](../../reference/program/mongod/#bin.mongod "bin.mongod")服务器 和 [`mongos`](../../reference/program/mongos/#bin.mongos "bin.mongos") 路由器过程。
 
 The audit facility can write audit events to the console, the [syslog](../../reference/glossary/#term-syslog) (option is unavailable on Windows), a JSON file, or a BSON file. For details on the audited operations and the audit log messages, see [System Event Audit Messages](../../reference/audit-message/).
-审计工具可以将审计事件写入控制台，[syslog](../../reference/glossary/#term-syslog)（Windows上不提供该 选项），JSON文件或BSON文件。有关审计的操作和审计日志消息的详细信息，请参阅系统事件审计消息[系统事件审计消息](../../reference/audit-message/)。
+审计工具可以将审计事件写入到控制台、[syslog](../../reference/glossary/#term-syslog)（Windows上不提供该 选项）、JSON文件或BSON文件。有关审计的操作和审计日志消息的详细信息，请参阅系统事件审计消息[系统事件审计消息](../../reference/audit-message/)。
 
 ## Enable and Configure Audit Output[¶](#enable-and-configure-audit-output "Permalink to this headline")
 ## 启用和配置审计输出
@@ -216,7 +216,7 @@ To view the contents of the file, pass the file to the MongoDB utility [`bsondum
 bsondump data/db/auditLog.bson
 ```
 See also
-也可以查看
+也可以看
 
 [Configure Audit Filters](../configure-audit-filters/), [Auditing](../../core/auditing/), [System Event Audit Messages](../../reference/audit-message/)
 [配置审计过滤器](../configure-audit-filters/)，[审计](../../core/auditing/)，[系统事件审计消息](../../reference/audit-message/)
