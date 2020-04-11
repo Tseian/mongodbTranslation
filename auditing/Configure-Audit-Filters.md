@@ -114,12 +114,12 @@ filter: '{ atype: { \$in:[ "createCollection", "dropCollection"] } }'
 
 ```yml
 storage:
-dbPath: data/db
+   dbPath: data/db
 auditLog:
-destination: file
-format: BSON
-path: data/db/auditLog.bson
-filter: '{ atype: { \$in:[ "createCollection", "dropCollection"] } }'
+   destination: file
+   format: BSON
+   path: data/db/auditLog.bson
+   filter: '{ atype: { $in: [ "createCollection", "dropCollection" ] } }'
 ```
 
 ### Filter on Authentication Operations on a Single Database[¶](#filter-on-authentication-operations-on-a-single-database "Permalink to this headline")
@@ -130,7 +130,7 @@ The `<field>` can include [any field in the audit message](../../reference/audit
 `<field>`可以包含[审计消息](../../reference/audit-message/)中的任何字段。对于身份认证操作(即，`atype: "authenticate"`)，审计消息中的param文档中包含‘db’字段。
 
 The following example audits only the `authenticate` operations that occur against the `test` database by using the filter:
-以下示例使用过滤器仅审核针对test数据库的`authenticate`操作。
+以下示例使用过滤器仅审核针对test数据库的身份验证操作。
 copy
 
 { atype: "authenticate", "param.db": "test" }
@@ -141,7 +141,7 @@ copy
 { atype: "authenticate", "param.db": "test" }
 ```
 To specify an audit filter, enclose the filter document in single quotes to pass the document as a string.
-在[配置文件](../../reference/configuration-options/)中指定审计过滤器。
+指定一个审计过滤器，可以将过滤器文档括在单引号中使其转成字符串。
 
 copy
 
@@ -161,30 +161,30 @@ To specify the audit filter in a [configuration file](../../reference/configurat
 copy
 ```yml
 storage:
-dbPath: data/db
+   dbPath: data/db
 security:
-authorization: enabled
+   authorization: enabled
 auditLog:
-destination: file
-format: BSON
-path: data/db/auditLog.bson
-filter: '{ atype: "authenticate", "param.db": "test" }'
+   destination: file
+   format: BSON
+   path: data/db/auditLog.bson
+   filter: '{ atype: "authenticate", "param.db": "test" }'
 ```
 复制
 ```yml
 storage:
-dbPath: data/db
+   dbPath: data/db
 security:
-authorization: enabled
+   authorization: enabled
 auditLog:
-destination: file
-format: BSON
-path: data/db/auditLog.bson
-filter: '{ atype: "authenticate", "param.db": "test" }'
+   destination: file
+   format: BSON
+   path: data/db/auditLog.bson
+   filter: '{ atype: "authenticate", "param.db": "test" }'
 ```
 
 To filter on all `authenticate` operations across databases, use the filter `{ atype: "authenticate" }`.
-要过滤数据库中的所有‘authenticate’操作，请使用过滤器`{ atype: "authenticate" }`。
+要过滤数据库中的所有身份验证操作，请使用过滤器`{ atype: "authenticate" }`。
 
 ### Filter on Collection Creation and Drop Operations for a Single Database[¶](#filter-on-collection-creation-and-drop-operations-for-a-single-database "Permalink to this headline")
 ### 筛选单个数据库的集合创建和删除操作[¶](#filter-on-collection-creation-and-drop-operations-for-a-single-database "Permalink to this headline")
@@ -193,170 +193,250 @@ The `<field>` can include [any field in the audit message](../../reference/audit
 `<field>`可以包含[审计消息](../../reference/audit-message/)中的任何字段。对于集合创建和删除操作(即，`atype: "createCollection"`和`atype: "dropCollection"`)，审计消息中的param文档中包含‘ns’字段。
 
 The following example audits only the `createCollection` and `dropCollection` operations that occur against the `test` database by using the filter:
+以下示例使用过滤器仅审核针对test数据库的创建集合和删除集合操作。
 
 Note
+注意
 
 The regular expression requires two backslashes (`\\`) to escape the dot (`.`).
+正则表达式需要两个反斜杠（`\\`）才能转义（`.`）
 
 copy
 
-copied
+{ atype: { $in: [ "createCollection", "dropCollection" ] }, "param.ns": /^test\\./ } }
 
-{ atype: { \$in: \[ "createCollection", "dropCollection" \] }, "param.ns": /^test\\\./ } }
+copy
+复制
+```sh
+{ atype: { $in: [ "createCollection", "dropCollection" ] }, "param.ns": /^test\\./ } }
+```
 
 To specify an audit filter, enclose the filter document in single quotes to pass the document as a string.
+指定一个审计过滤器，可以将过滤器文档括在单引号中使其转成字符串。
 
 copy
 
-copied
+```sh
+mongod --dbpath data/db --auth --auditDestination file --auditFilter '{ atype: { $in: [ "createCollection", "dropCollection" ] }, "param.ns": /^test\\./ } }' --auditFormat BSON --auditPath data/db/auditLog.bson
+```
+复制
 
-mongod --dbpath data/db --auth --auditDestination file --auditFilter '{ atype: { \$in: \[ "createCollection", "dropCollection" \] }, "param.ns": /^test\\\./ } }' --auditFormat BSON --auditPath data/db/auditLog.bson
+```sh
+mongod --dbpath data/db --auth --auditDestination file --auditFilter '{ atype: { $in: [ "createCollection", "dropCollection" ] }, "param.ns": /^test\\./ } }' --auditFormat BSON --auditPath data/db/auditLog.bson
+```
 
 Include additional options as required for your configuration. For instance, if you wish remote clients to connect to your deployment or your deployment members are run on different hosts, specify the `--bind_ip`. For more information, see [Localhost Binding Compatibility Changes](../../release-notes/3.6-compatibility/#bind-ip-compatibility).
+包括配置所需的其他选项。例如，如果您希望远程客户端连接到您的部署，或者您的部署成员在不同的主机上运行，​​请指定--bind_ip参数。更多信息，请参见[Localhost绑定兼容性更改](../../release-notes/3.6-compatibility/#bind-ip-compatibility)。
 
 To specify the audit filter in a [configuration file](../../reference/configuration-options/), you must use the YAML format of the configuration file.
-
+在[配置文件](../../reference/configuration-options/)中指定审计过滤器，必须使用配置文件的YAML格式。
 
 copy
-
-copied
-
+```yml
 storage:
-dbPath: data/db
+   dbPath: data/db
 security:
-authorization: enabled
+   authorization: enabled
 auditLog:
-destination: file
-format: BSON
-path: data/db/auditLog.bson
-filter: '{ atype: { \$in: \[ "createCollection", "dropCollection" \] }, "param.ns": /^test\\\./ } }'
+   destination: file
+   format: BSON
+   path: data/db/auditLog.bson
+   filter: '{ atype: { $in: [ "createCollection", "dropCollection" ] }, "param.ns": /^test\\./ } }'
+```
+
+复制
+```yml
+storage:
+   dbPath: data/db
+security:
+   authorization: enabled
+auditLog:
+   destination: file
+   format: BSON
+   path: data/db/auditLog.bson
+   filter: '{ atype: { $in: [ "createCollection", "dropCollection" ] }, "param.ns": /^test\\./ } }'
+```
 
 ### Filter by Authorization Role[¶](#filter-by-authorization-role "Permalink to this headline")
+### 通过授权角色进行筛选[¶](#filter-by-authorization-role "Permalink to this headline")
 
 The following example audits operations by users with [`readWrite`](../../reference/built-in-roles/#readWrite "readWrite") role on the `test` database, including users with roles that inherit from [`readWrite`](../../reference/built-in-roles/#readWrite "readWrite"), by using the filter:
+以下示例通过使用过滤器来审核`test`数据库上具有[`readWrite`]角色的用户的操作，包括具有从[`readWrite`]继承的角色的用户：
 
 copy
-
-copied
 
 { roles: { role: "readWrite", db: "test" } }
 
+复制
+```js
+{ roles: { role: "readWrite", db: "test" } }
+```
+
 To specify an audit filter, enclose the filter document in single quotes to pass the document as a string.
+指定一个审计过滤器，可以将过滤器文档括在单引号中使其转成字符串。
 
 copy
-
-copied
 
 mongod --dbpath data/db --auth --auditDestination file --auditFilter '{ roles: { role: "readWrite", db: "test" } }' --auditFormat BSON --auditPath data/db/auditLog.bson
 
+复制
+```sh
+mongod --dbpath data/db --auth --auditDestination file --auditFilter '{ roles: { role: "readWrite", db: "test" } }' --auditFormat BSON --auditPath data/db/auditLog.bson
+```
+
 Include additional options as required for your configuration. For instance, if you wish remote clients to connect to your deployment or your deployment members are run on different hosts, specify the `--bind_ip`. For more information, see [Localhost Binding Compatibility Changes](../../release-notes/3.6-compatibility/#bind-ip-compatibility).
+包括配置所需的其他选项。例如，如果您希望远程客户端连接到您的部署，或者您的部署成员在不同的主机上运行，​​请指定--bind_ip参数。更多信息，请参见[Localhost绑定兼容性更改](../../release-notes/3.6-compatibility/#bind-ip-compatibility)。
 
 To specify the audit filter in a [configuration file](../../reference/configuration-options/), you must use the YAML format of the configuration file.
+在[配置文件](../../reference/configuration-options/)中指定审计过滤器，必须使用配置文件的YAML格式。
 
 copy
-
-copied
-
+```yml
 storage:
-dbPath: data/db
+   dbPath: data/db
 security:
-authorization: enabled
+   authorization: enabled
 auditLog:
-destination: file
-format: BSON
-path: data/db/auditLog.bson
-filter: '{ roles: { role: "readWrite", db: "test" } }'
-
+   destination: file
+   format: BSON
+   path: data/db/auditLog.bson
+   filter: '{ roles: { role: "readWrite", db: "test" } }'
+```
+复制
+```yml
+storage:
+   dbPath: data/db
+security:
+   authorization: enabled
+auditLog:
+   destination: file
+   format: BSON
+   path: data/db/auditLog.bson
+   filter: '{ roles: { role: "readWrite", db: "test" } }'
+```
 ### Filter on Read and Write Operations[¶](#filter-on-read-and-write-operations "Permalink to this headline")
+### 读写操作中的过滤器[¶](#filter-on-read-and-write-operations "Permalink to this headline")
 
 To capture [`read`](../../reference/built-in-roles/#read "read") and `write` operations in the audit, you must also enable the audit system to log authorization successes using the [`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess") parameter. [\[1\]](#authorization-agnostic)
+要在审核中进行捕获read和write操作，必须设置[`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")参数使审计系统记录身份验证成功。[1](#authorization-agnostic)
 
 Note
+注意
 
 Enabling [`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess") degrades performance more than logging only the authorization failures.
+启用[`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")与仅记录授权失败相比会使性能下降更多。
 
 The following example audits the [`find()`](../../reference/method/db.collection.find/#db.collection.find "db.collection.find()"), [`insert()`](../../reference/method/db.collection.insert/#db.collection.insert "db.collection.insert()"), [`remove()`](../../reference/method/db.collection.remove/#db.collection.remove "db.collection.remove()"), [`update()`](../../reference/method/db.collection.update/#db.collection.update "db.collection.update()"), [`save()`](../../reference/method/db.collection.save/#db.collection.save "db.collection.save()"), and [`findAndModify()`](../../reference/method/db.collection.findAndModify/#db.collection.findAndModify "db.collection.findAndModify()") operations by using the filter:
+下面的例子用来审计[`find()`](../../reference/method/db.collection.find/#db.collection.find "db.collection.find()"), [`insert()`](../../reference/method/db.collection.insert/#db.collection.insert "db.collection.insert()"), [`remove()`](../../reference/method/db.collection.remove/#db.collection.remove "db.collection.remove()"), [`update()`](../../reference/method/db.collection.update/#db.collection.update "db.collection.update()"), [`save()`](../../reference/method/db.collection.save/#db.collection.save "db.collection.save()")和 [`findAndModify()`](../../reference/method/db.collection.findAndModify/#db.collection.findAndModify "db.collection.findAndModify()")，过滤器如下：
 
 copy
 
-copied
+{ atype: "authCheck", "param.command": { $in: [ "find", "insert", "delete", "update", "findandmodify" ] } }
 
-{ atype: "authCheck", "param.command": { \$in: \[ "find", "insert", "delete", "update", "findandmodify" \] } }
-
+复制
+```js
+{ atype: "authCheck", "param.command": { $in: [ "find", "insert", "delete", "update", "findandmodify" ] } }
+```
 To specify an audit filter, enclose the filter document in single quotes to pass the document as a string.
+指定一个审计过滤器，可以将过滤器文档括在单引号中使其转成字符串。
 
 copy
-
-copied
-
+```sh
 mongod --dbpath data/db --auth --setParameter auditAuthorizationSuccess=true --auditDestination file --auditFilter '{ atype: "authCheck", "param.command": { \$in: \[ "find", "insert", "delete", "update", "findandmodify" \] } }' --auditFormat BSON --auditPath data/db/auditLog.bson
-
+```
 Include additional options as required for your configuration. For instance, if you wish remote clients to connect to your deployment or your deployment members are run on different hosts, specify the `--bind_ip`. For more information, see [Localhost Binding Compatibility Changes](../../release-notes/3.6-compatibility/#bind-ip-compatibility).
+包括配置所需的其他选项。例如，如果您希望远程客户端连接到您的部署，或者您的部署成员在不同的主机上运行，​​请指定--bind_ip参数。更多信息，请参见[Localhost绑定兼容性更改](../../release-notes/3.6-compatibility/#bind-ip-compatibility)。
 
 To specify the audit filter in a [configuration file](../../reference/configuration-options/), you must use the YAML format of the configuration file.
+在[配置文件](../../reference/configuration-options/)中指定审计过滤器，必须使用配置文件的YAML格式。
 
 copy
-
-copied
-
+```yml
 storage:
-dbPath: data/db
+   dbPath: data/db
 security:
-authorization: enabled
+   authorization: enabled
 auditLog:
-destination: file
-format: BSON
-path: data/db/auditLog.bson
-filter: '{ atype: "authCheck", "param.command": { \$in: \[ "find", "insert", "delete", "update", "findandmodify" \] } }'
+   destination: file
+   format: BSON
+   path: data/db/auditLog.bson
+   filter: '{ atype: "authCheck", "param.command": { $in: [ "find", "insert", "delete", "update", "findandmodify" ] } }'
 setParameter: { auditAuthorizationSuccess: true }
-
+```
 ### Filter on Read and Write Operations for a Collection[¶](#filter-on-read-and-write-operations-for-a-collection "Permalink to this headline")
+### 过滤集合的读写操作[¶](#filter-on-read-and-write-operations-for-a-collection "Permalink to this headline")
 
 To capture [`read`](../../reference/built-in-roles/#read "read") and `write` operations in the audit, you must also enable the audit system to log authorization successes using the [`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess") parameter. [\[1\]](#authorization-agnostic)
+要在审核中进行捕获read和write操作，还必须使用[`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")参数使审核系统能够记录授权成功。 [[1]](#authorization-agnostic)
 
 Note
+注意
 
 Enabling [`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess") degrades performance more than logging only the authorization failures.
 
 The following example audits the [`find()`](../../reference/method/db.collection.find/#db.collection.find "db.collection.find()"), [`insert()`](../../reference/method/db.collection.insert/#db.collection.insert "db.collection.insert()"), [`remove()`](../../reference/method/db.collection.remove/#db.collection.remove "db.collection.remove()"), [`update()`](../../reference/method/db.collection.update/#db.collection.update "db.collection.update()"), [`save()`](../../reference/method/db.collection.save/#db.collection.save "db.collection.save()"), and [`findAndModify()`](../../reference/method/db.collection.findAndModify/#db.collection.findAndModify "db.collection.findAndModify()") operations for the collection `orders` in the database `test` by using the filter:
 
+下面的例子用来审计在test数据库的orders集合上的[`find()`](../../reference/method/db.collection.find/#db.collection.find "db.collection.find()"), [`insert()`](../../reference/method/db.collection.insert/#db.collection.insert "db.collection.insert()"), [`remove()`](../../reference/method/db.collection.remove/#db.collection.remove "db.collection.remove()"), [`update()`](../../reference/method/db.collection.update/#db.collection.update "db.collection.update()"), [`save()`](../../reference/method/db.collection.save/#db.collection.save "db.collection.save()"), and [`findAndModify()`](../../reference/method/db.collection.findAndModify/#db.collection.findAndModify "db.collection.findAndModify()")操作，过滤器如下：
+
 copy
-
-copied
-
-{ atype: "authCheck", "param.ns": "test.orders", "param.command": { \$in: \[ "find", "insert", "delete", "update", "findandmodify" \] } }
-
+```js
+{ atype: "authCheck", "param.ns": "test.orders", "param.command": { $in: [ "find", "insert", "delete", "update", "findandmodify" ] } }
+```
+复制
+```js
+{ atype: "authCheck", "param.ns": "test.orders", "param.command": { $in: [ "find", "insert", "delete", "update", "findandmodify" ] } }
+```
 To specify an audit filter, enclose the filter document in single quotes to pass the document as a string.
+指定一个审计过滤器，可以将过滤器文档括在单引号中使其转成字符串。
 
 copy
-
-copied
-
-mongod --dbpath data/db --auth --setParameter auditAuthorizationSuccess=true --auditDestination file --auditFilter '{ atype: "authCheck", "param.ns": "test.orders", "param.command": { \$in: \[ "find", "insert", "delete", "update", "findandmodify" \] } }' --auditFormat BSON --auditPath data/db/auditLog.bson
+```sh
+mongod --dbpath data/db --auth --setParameter auditAuthorizationSuccess=true --auditDestination file --auditFilter '{ atype: "authCheck", "param.ns": "test.orders", "param.command": { $in: [ "find", "insert", "delete", "update", "findandmodify" ] } }' --auditFormat BSON --auditPath data/db/auditLog.bson
+```
+复制
+```sh
+mongod --dbpath data/db --auth --setParameter auditAuthorizationSuccess=true --auditDestination file --auditFilter '{ atype: "authCheck", "param.ns": "test.orders", "param.command": { $in: [ "find", "insert", "delete", "update", "findandmodify" ] } }' --auditFormat BSON --auditPath data/db/auditLog.bson
+```
 
 Include additional options as required for your configuration. For instance, if you wish remote clients to connect to your deployment or your deployment members are run on different hosts, specify the `--bind_ip`. For more information, see [Localhost Binding Compatibility Changes](../../release-notes/3.6-compatibility/#bind-ip-compatibility).
+包括配置所需的其他选项。例如，如果您希望远程客户端连接到您的部署，或者您的部署成员在不同的主机上运行，​​请指定--bind_ip参数。有关更多信息，请参见[Localhost绑定兼容性更改](../../release-notes/3.6-compatibility/#bind-ip-compatibility)。
 
 To specify the audit filter in a [configuration file](../../reference/configuration-options/), you must use the YAML format of the configuration file.
+在[配置文件](../../reference/configuration-options/)中指定审计过滤器，必须使用配置文件的YAML格式。
 
 copy
-
-copied
-
+```yml
 storage:
-dbPath: data/db
+   dbPath: data/db
 security:
-authorization: enabled
+   authorization: enabled
 auditLog:
-destination: file
-format: BSON
-path: data/db/auditLog.bson
-filter: '{ atype: "authCheck", "param.ns": "test.orders", "param.command": { \$in: \[ "find", "insert", "delete", "update", "findandmodify" \] } }'
+   destination: file
+   format: BSON
+   path: data/db/auditLog.bson
+   filter: '{ atype: "authCheck", "param.ns": "test.orders", "param.command": { $in: [ "find", "insert", "delete", "update", "findandmodify" ] } }'
 setParameter: { auditAuthorizationSuccess: true }
-
+```
+复制
+```yml
+storage:
+   dbPath: data/db
+security:
+   authorization: enabled
+auditLog:
+   destination: file
+   format: BSON
+   path: data/db/auditLog.bson
+   filter: '{ atype: "authCheck", "param.ns": "test.orders", "param.command": { $in: [ "find", "insert", "delete", "update", "findandmodify" ] } }'
+setParameter: { auditAuthorizationSuccess: true }
+```
 See also
+也可以看看
 
 [Configure Auditing](../configure-auditing/), [Auditing](../../core/auditing/), [System Event Audit Messages](../../reference/audit-message/)
+[配置审计](../configure-auditing/), [审计](../../core/auditing/), [系统事件审计消息](../../reference/audit-message/)
 
-\[1\]
+[1]_([1](#id1), [2](#id2))_ You can enable [`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess") parameter without enabling `--auth`; however, all operations will return success for authorization checks.
 
-_([1](#id1), [2](#id2))_ You can enable [`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess") parameter without enabling `--auth`; however, all operations will return success for authorization checks.
+[1]（1，2）可以启用[`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")参数不启用--auth; 但是所有操作将返回成功以进行授权检查。
+
