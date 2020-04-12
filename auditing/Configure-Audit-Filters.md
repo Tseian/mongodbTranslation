@@ -317,14 +317,14 @@ auditLog:
 ### Filter on Read and Write Operations[¶](#filter-on-read-and-write-operations "Permalink to this headline")
 ### 读写操作中的过滤器[¶](#filter-on-read-and-write-operations "Permalink to this headline")
 
-To capture [`read`](../../reference/built-in-roles/#read "read") and `write` operations in the audit, you must also enable the audit system to log authorization successes using the [`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess") parameter. [\[1\]](#authorization-agnostic)
-要在审核中进行捕获read和write操作，必须设置[`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")参数使审计系统记录身份验证成功。[1](#authorization-agnostic)
+To capture [`read`](../../reference/built-in-roles/#read "read") and `write` operations in the audit, you must also enable the audit system to log authorization successes using the [审计授权成功](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess") parameter. [\[1\]](#authorization-agnostic)
+要在审核中进行捕获read和write操作，必须设置[审计](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")参数使审计系统记录身份验证成功。[1](#authorization-agnostic)
 
 Note
 注意
 
 Enabling [`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess") degrades performance more than logging only the authorization failures.
-启用[`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")与仅记录授权失败相比会使性能下降更多。
+启用[审计授权成功](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")与仅记录授权失败相比会使性能下降更多。
 
 The following example audits the [`find()`](../../reference/method/db.collection.find/#db.collection.find "db.collection.find()"), [`insert()`](../../reference/method/db.collection.insert/#db.collection.insert "db.collection.insert()"), [`remove()`](../../reference/method/db.collection.remove/#db.collection.remove "db.collection.remove()"), [`update()`](../../reference/method/db.collection.update/#db.collection.update "db.collection.update()"), [`save()`](../../reference/method/db.collection.save/#db.collection.save "db.collection.save()"), and [`findAndModify()`](../../reference/method/db.collection.findAndModify/#db.collection.findAndModify "db.collection.findAndModify()") operations by using the filter:
 下面的例子用来审计[`find()`](../../reference/method/db.collection.find/#db.collection.find "db.collection.find()"), [`insert()`](../../reference/method/db.collection.insert/#db.collection.insert "db.collection.insert()"), [`remove()`](../../reference/method/db.collection.remove/#db.collection.remove "db.collection.remove()"), [`update()`](../../reference/method/db.collection.update/#db.collection.update "db.collection.update()"), [`save()`](../../reference/method/db.collection.save/#db.collection.save "db.collection.save()")和 [`findAndModify()`](../../reference/method/db.collection.findAndModify/#db.collection.findAndModify "db.collection.findAndModify()")这些操作，过滤器如下：
@@ -371,12 +371,13 @@ setParameter: { auditAuthorizationSuccess: true }
 ### 过滤集合的读写操作[¶](#filter-on-read-and-write-operations-for-a-collection "Permalink to this headline")
 
 To capture [`read`](../../reference/built-in-roles/#read "read") and `write` operations in the audit, you must also enable the audit system to log authorization successes using the [`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess") parameter. [\[1\]](#authorization-agnostic)
-要在审核中进行捕获read和write操作，还必须使用[`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")参数使审核系统能够记录授权成功。 [[1]](#authorization-agnostic)
+要在审核中进行捕获read和write操作，还必须使用[审计授权成功](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")参数使审核系统能够记录授权成功。 [[1]](#authorization-agnostic)
 
 Note
 注意
 
 Enabling [`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess") degrades performance more than logging only the authorization failures.
+启用[审计授权成功](../parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")与仅记录授权失败相比，启用会使性能下降更多。
 
 The following example audits the [`find()`](../../reference/method/db.collection.find/#db.collection.find "db.collection.find()"), [`insert()`](../../reference/method/db.collection.insert/#db.collection.insert "db.collection.insert()"), [`remove()`](../../reference/method/db.collection.remove/#db.collection.remove "db.collection.remove()"), [`update()`](../../reference/method/db.collection.update/#db.collection.update "db.collection.update()"), [`save()`](../../reference/method/db.collection.save/#db.collection.save "db.collection.save()"), and [`findAndModify()`](../../reference/method/db.collection.findAndModify/#db.collection.findAndModify "db.collection.findAndModify()") operations for the collection `orders` in the database `test` by using the filter:
 
@@ -442,5 +443,5 @@ See also
 
 [1]_([1](#id1), [2](#id2))_ You can enable [`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess") parameter without enabling `--auth`; however, all operations will return success for authorization checks.
 
-[1]（1，2）可以启用[`auditAuthorizationSuccess`](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")参数不启用--auth; 但是所有操作将返回成功以进行授权检查。
+[1]（1，2）可以启用[审计授权成功](../../reference/parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")参数不启用--auth; 但是所有操作将返回成功以进行授权检查。
 
