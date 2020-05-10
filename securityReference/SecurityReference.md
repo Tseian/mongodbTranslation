@@ -5,7 +5,7 @@
 On this page
 
 - [Security Methods in the `mongo` Shell](https://docs.mongodb.com/manual/reference/security/#security-methods-in-the-mongo-shell)
-- [mongo shell中的安全方法]((https://docs.mongodb.com/manual/reference/security/#security-methods-in-the-mongo-shell))
+- [mongo shell的安全相关方法]((https://docs.mongodb.com/manual/reference/security/#security-methods-in-the-mongo-shell))
 - [Security Reference Documentation](https://docs.mongodb.com/manual/reference/security/#security-reference-documentation)
 - [安全参考文档](https://docs.mongodb.com/manual/reference/security/#security-reference-documentation)
 
