@@ -17,7 +17,7 @@ On this page
 - [Sharding Actions](https://docs.mongodb.com/manual/reference/privilege-actions/#sharding-actions)
 - [分片操作](https://docs.mongodb.com/manual/reference/privilege-actions/#sharding-actions)
 - [Server Administration Actions](https://docs.mongodb.com/manual/reference/privilege-actions/#server-administration-actions)
-- [服务器管理员操作](https://docs.mongodb.com/manual/reference/privilege-actions/#server-administration-actions)
+- [服务器管理操作](https://docs.mongodb.com/manual/reference/privilege-actions/#server-administration-actions)
 - [Session Actions](https://docs.mongodb.com/manual/reference/privilege-actions/#session-actions)
 - [会话操作](https://docs.mongodb.com/manual/reference/privilege-actions/#session-actions)
 - [Free Monitoring Actions](https://docs.mongodb.com/manual/reference/privilege-actions/#free-monitoring-actions)
@@ -29,11 +29,11 @@ On this page
 
 Privilege actions define the operations a user can perform on a [resource](https://docs.mongodb.com/manual/reference/resource-document/#resource-document). A MongoDB [privilege](https://docs.mongodb.com/manual/core/authorization/#privileges) comprises a [resource](https://docs.mongodb.com/manual/reference/resource-document/#resource-document) and the permitted actions. This page lists available actions grouped by common purpose.
 
-权限操作的定义了用户可以对[资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-document)做的操作。一个MongoDB[权限](https://docs.mongodb.com/manual/core/authorization/#privileges)包括[资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-document)和允许的操作。本页面列出了按通用目的分组的可用操作。
+权限操作定义了用户可以对[资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-document)做的操作。一个MongoDB[权限](https://docs.mongodb.com/manual/core/authorization/#privileges)包括[资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-document)和允许的操作。本页面列出了按通用目的分组的可用操作。
 
 MongoDB provides built-in roles with pre-defined pairings of resources and permitted actions. For lists of the actions granted, see [Built-In Roles](https://docs.mongodb.com/manual/reference/built-in-roles/). To define custom roles, see [Create a User-Defined Role](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/#create-user-defined-role).
 
-MongoDB为内置角色提供了预定义的资源和允许的操作。有关授予的操作的列表，请参见 [内置角色](https://docs.mongodb.com/manual/reference/built-in-roles/)。要定义自定义角色，请参阅 [创建用户定义角色](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/#create-user-defined-role)。
+MongoDB为内置角色提供了预定义的资源和允许的操作。有关授予的操作的列表，请参阅 [内置角色](https://docs.mongodb.com/manual/reference/built-in-roles/)。要定义自定义角色，请参阅 [创建用户定义角色](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/#create-user-defined-role)。
 
 ## Query and Write Actions
 
@@ -64,22 +64,25 @@ MongoDB为内置角色提供了预定义的资源和允许的操作。有关授�
   [`地理位置查找`](https://docs.mongodb.com/manual/reference/command/geoSearch/#dbcmd.geoSearch)
 
   [`getLastError`](https://docs.mongodb.com/manual/reference/command/getLastError/#dbcmd.getLastError)
+
   [`getMore`](https://docs.mongodb.com/manual/reference/command/getMore/#dbcmd.getMore)
 
   [`killCursors`](https://docs.mongodb.com/manual/reference/command/killCursors/#dbcmd.killCursors), provided that the cursor is associated with a currently authenticated user.
 
-  提供光标与当前经过身份验证的用户相关联。
+  提供与当前经过身份验证的用户相关联的光标
 
   [`listCollections`](https://docs.mongodb.com/manual/reference/command/listCollections/#dbcmd.listCollections)
 
   [`listIndexes`](https://docs.mongodb.com/manual/reference/command/listIndexes/#dbcmd.listIndexes)
-  [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) with the `{out: inline}` option. 和选项 `{out: inline}`.
+  [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) with the `{out: inline}` option. 
+
+  [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce)和选项 `{out: inline}一起使用。
 
   [`resetError`](https://docs.mongodb.com/manual/reference/command/resetError/#dbcmd.resetError)
 
   Required for the query portion of the [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) command and [`db.collection.mapReduce`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce) helper method when [outputting to a collection](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd).
 
-  [输出到集合](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd)时，[`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce)命令和 [`db.collection.mapReduce`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce)辅助方法的查询部分是必需。
+  [输出到集合](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd)时，[`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce)命令和 [`db.collection.mapReduce`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce)辅助方法的查询部分是必需的。
 
   Required for the query portion of the [`findAndModify`](https://docs.mongodb.com/manual/reference/command/findAndModify/#dbcmd.findAndModify) command and [`db.collection.findAndModify`](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/#db.collection.findAndModify) helper method.
 
@@ -87,7 +90,7 @@ MongoDB为内置角色提供了预定义的资源和允许的操作。有关授�
 
   Required on the *source* collection for the [`cloneCollectionAsCapped`](https://docs.mongodb.com/manual/reference/command/cloneCollectionAsCapped/#dbcmd.cloneCollectionAsCapped) and [`renameCollection`](https://docs.mongodb.com/manual/reference/command/renameCollection/#dbcmd.renameCollection) commands and the [`db.collection.renameCollection()`](https://docs.mongodb.com/manual/reference/method/db.collection.renameCollection/#db.collection.renameCollection) helper method.
 
-  [`cloneCollectionAsCapped`](https://docs.mongodb.com/manual/reference/command/cloneCollectionAsCapped/#dbcmd.cloneCollectionAsCapped) 和 [`renameCollection`](https://docs.mongodb.com/manual/reference/command/renameCollection/#dbcmd.renameCollection)命令行和 [`db.collection.renameCollection()辅助方法要求有源集合。
+  [`cloneCollectionAsCapped`](https://docs.mongodb.com/manual/reference/command/cloneCollectionAsCapped/#dbcmd.cloneCollectionAsCapped) 和 [`renameCollection`](https://docs.mongodb.com/manual/reference/command/renameCollection/#dbcmd.renameCollection)命令行和 [`db.collection.renameCollection()`](https://docs.mongodb.com/manual/reference/method/db.collection.renameCollection/#db.collection.renameCollection)辅助方法要求有源集合。
 
   For MongoDB 4.0.6+:
 
@@ -95,7 +98,7 @@ MongoDB为内置角色提供了预定义的资源和允许的操作。有关授�
 
   对于MongoDB 4.0.6+：
 
-  如果用户没有[`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) 特权操作， 用户运行[`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) 命令行时`authorizedDatabases`选项未指定或设置为true，则用户可以运行该命令以返回该用户具有特权的数据库的列表（包括该用户对其特定集合具有特权的数据库）。
+  如果用户没有[`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) 特权操作， 用户运行[`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) 命令行时`authorizedDatabases`选项未指定或设置为true，则用户可以运行该命令以返回该用户具有权限的数据库的列表（包括该用户对其特定集合具有特权的数据库）。
 
   For MongoDB 4.0.5:
 
@@ -103,7 +106,7 @@ MongoDB为内置角色提供了预定义的资源和允许的操作。有关授�
 
   对于MongoDB 4.0.5:
 
-  如果用户没有[`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) 特权操作，在authorizedDatabases未指定或设置为true的情况下运行[`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) 命令时，用户可以运行该命令以返回用户对其具有[`find`](https://docs.mongodb.com/manual/reference/privilege-actions/#find)操作特权 的数据库的列表 。
+  如果用户没有[`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) 特权操作，在authorizedDatabases未指定或设置为true的情况下运行[`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) 命令时，用户可以运行该命令以返回用户对其具有[`find`](https://docs.mongodb.com/manual/reference/privilege-actions/#find)操作权限的数据库列表 。
 
 - For MongoDB 4.0.0-4.0.4:
 
@@ -113,7 +116,7 @@ MongoDB为内置角色提供了预定义的资源和允许的操作。有关授�
 
 - If the user does not have the [`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) privilege action, users can run the [`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) command to return a list of databases for which the user has the [`find`](https://docs.mongodb.com/manual/reference/privilege-actions/#find) action privilege.Apply this action to database or collection resources.
 
-- 如果用户没有[`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) 特权操作，则用户可以运行[`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) 命令以返回该用户对其具有[`find`](https://docs.mongodb.com/manual/reference/privilege-actions/#find)操作特权的数据库列表 。
+- 如果用户没有[`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) 特权操作，则用户可以运行[`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) 命令以返回该用户对其具有[`find`](https://docs.mongodb.com/manual/reference/privilege-actions/#find)操作权限的数据库列表 。
 
 - `insert`  
 
