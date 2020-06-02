@@ -11,7 +11,7 @@ On this page
 
 The `system.roles` collection in the `admin` database stores the user-defined roles. To create and manage these user-defined roles, MongoDB provides [role management commands](https://docs.mongodb.com/manual/reference/command/#role-management-commands).
 
-admin数据库中的`system.roles`集合存储用户定义的角色。为了创建和管理这些用户定义的角色，MongoDB提供了[角色管理命令](https://docs.mongodb.com/manual/reference/command/#role-management-commands)。
+admin数据库中的`system.roles`集合存储用户定义的角色。为了创建和管理这些用户自定义角色，MongoDB提供了[角色管理命令](https://docs.mongodb.com/manual/reference/command/#role-management-commands)。
 
 ## system.roles Schema
 
@@ -113,13 +113,13 @@ A `system.roles` document has the following fields:
 
   See [Resource Document](https://docs.mongodb.com/manual/reference/resource-document/#resource-document) for more details.
 
-  有关更多详细信息，请参见[资源文档](https://docs.mongodb.com/manual/reference/resource-document/#resource-document)。
+  有关更多详细信息，请阅读[资源文档](https://docs.mongodb.com/manual/reference/resource-document/#resource-document)。
 
   `admin.system.roles.privileges[n].actions`
 
   An array of actions permitted on the resource. For a list of actions, see [Privilege Actions](https://docs.mongodb.com/manual/reference/privilege-actions/#security-user-actions).
 
-  该[`roles`](https://docs.mongodb.com/manual/reference/system-roles-collection/#admin.system.roles.roles)数组包含角色文档，这些角色文档指定了该角色从中[继承](https://docs.mongodb.com/manual/core/authorization/#inheritance)特权的角色。
+  资源上允许的一系列操作， 有关操作列表，请参阅[特权操作](https://docs.mongodb.com/manual/reference/privilege-actions/#security-user-actions)
 
 - `admin.system.roles.roles`
 
@@ -145,7 +145,7 @@ A `system.roles` document has the following fields:
 
   The name of the role. A role can be a [built-in role](https://docs.mongodb.com/manual/reference/built-in-roles/#built-in-roles) provided by MongoDB or a [user-defined role](https://docs.mongodb.com/manual/core/security-user-defined-roles/#user-defined-roles).
 
-  角色名称。角色可以是MongoDB提供的[内置](https://docs.mongodb.com/manual/reference/built-in-roles/#built-in-roles)角色，也可以是[用户定义的角色](https://docs.mongodb.com/manual/core/security-user-defined-roles/#user-defined-roles)。
+  角色名称。角色可以是 MongoDB 提供的[内置](https://docs.mongodb.com/manual/reference/built-in-roles/#built-in-roles)角色，也可以是[用户定义的角色](https://docs.mongodb.com/manual/core/security-user-defined-roles/#user-defined-roles)。
 
   `admin.system.roles.roles[n].`db`
 
@@ -167,7 +167,7 @@ Consider the following sample documents found in `system.roles` collection of th
 
 The following is a sample document for a user-defined role `appUser` defined for the `myApp` database:
 
-以下是为 myApp 数据库定义的自定义用户appUser的实例文档
+以下是为 myApp 数据库定义的自定义用户 appUser 的示例文档
 
 copy
 
@@ -195,15 +195,15 @@ The `privileges` array lists the five privileges that the `appUser` role specifi
 privileges数组列出了appUser角色指定的五个权限
 
 - The first privilege permits its actions ( `"find"`, `"createCollection"`, `"dbStats"`, `"collStats"`) on all the collections in the `myApp` database *excluding* its system collections. See [Specify a Database as Resource](https://docs.mongodb.com/manual/reference/resource-document/#resource-specific-db).
-- 第一个权限允许对myApp数据库中除system集合以外所有集合执行("find"`, `"createCollection"`, `"dbStats"`, `"collStats"`) 操作， 详见 [将数据库指定为操作资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-specific-db).
+- 第一个权限允许对 myApp 数据库中除 system 集合以外所有集合执行("find"`, `"createCollection"`, `"dbStats"`, `"collStats"`) 操作， 详见 [将数据库指定为操作资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-specific-db).
 - The next two privileges permits *additional* actions on specific collections, `logs` and `data`, in the `myApp` database. See [Specify a Collection of a Database as Resource](https://docs.mongodb.com/manual/reference/resource-document/#resource-specific-db-collection).
-- 后面的两个权限允许对myApp数据库中指定的集合logs 和 data 上执行额外的操作，详见 [指定数据库中的集合作为操作资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-specific-db-collection).
+- 后面的两个权限允许对 myApp 数据库中指定的集合 logs 和 data 上执行额外的操作，详见 [指定数据库中的集合作为操作资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-specific-db-collection).
 - The last privilege permits actions on one [system collections](https://docs.mongodb.com/manual/reference/system-collections/) in the `myApp` database. While the first privilege gives database-wide permission for the `find` action, the action does not apply to `myApp`’s system collections. To give access to a system collection, a privilege must explicitly specify the collection. See [Resource Document](https://docs.mongodb.com/manual/reference/resource-document/).
-- 最后一个权限允许在myApp数据库的 [system 集合](https://docs.mongodb.com/manual/reference/system-collections/) 上操作。虽然第一个权限为查找操作授予了数据库范围，但是不能在myApp数据库的system集合上操作。为了授予访问system集合的权限，权限必须显示指定需要操作的集合。详见[操作资源文档](https://docs.mongodb.com/manual/reference/resource-document/).
+- 最后一个权限允许在 myApp 数据库的 [system 集合](https://docs.mongodb.com/manual/reference/system-collections/) 上操作。虽然第一个权限为查找操作授予了数据库范围，但是不能在 myApp 数据库的 system 集合上操作。为了授予访问 system 集合的权限，权限必须显示指定需要操作的集合。详见[操作资源文档](https://docs.mongodb.com/manual/reference/resource-document/).
 
 As indicated by the empty `roles` array, `appUser` inherits no additional privileges from other roles.
 
-空的roles数组指定appUser没有从其他角色继承权限。
+空的roles数组指定 appUser 没有从其他角色继承权限。
 
 ### User-Defined Role Inherits from Other Roles
 
@@ -211,7 +211,7 @@ As indicated by the empty `roles` array, `appUser` inherits no additional privil
 
 The following is a sample document for a user-defined role `appAdmin` defined for the `myApp` database: The document shows that the `appAdmin` role specifies privileges as well as inherits privileges from other roles:
 
-以下示例文档为myApp数据库定义了用户自定义角色appAdmin：文档显示appAdmin角色指定了权限也从其他角色继承了权限。
+以下示例文档为 myApp 数据库定义了用户自定义角色 appAdmin ：文档显示 appAdmin 角色指定了权限，也从其他角色继承了权限。
 
 copy
 
@@ -234,9 +234,9 @@ copy
 
 The `privileges` array lists the privileges that the `appAdmin` role specifies. This role has a single privilege that permits its actions ( `"insert"`, `"dbStats"`, `"collStats"`, `"compact"`) on all the collections in the `myApp` database *excluding* its system collections. See [Specify a Database as Resource](https://docs.mongodb.com/manual/reference/resource-document/#resource-specific-db).
 
-privileges数组列举了appAdmin角色指定的权限，这个角色有一个权限允许在除system集合外的所有集合上执行 ( `"insert"`, `"dbStats"`, `"collStats"`, `"compact"`)操作。详见 [执行数据库作为操作资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-specific-db).
+privileges 数组列举了 appAdmin 角色指定的权限，这个角色有一个权限，允许在除 system 集合外的所有集合上执行 ( `"insert"`, `"dbStats"`, `"collStats"`, `"compact"`)操作。详见[执行数据库作为操作资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-specific-db).
 
 The `roles` array lists the roles, identified by the role names and databases, from which the role `appAdmin` inherits privileges.
 
-roles数组列出了由角色名称和数据库标识的角色，角色appAdmin从中继承特权。
+roles数组列出了由角色名称和数据库标识的角色，角色 appAdmin 从中继承特权。
 
