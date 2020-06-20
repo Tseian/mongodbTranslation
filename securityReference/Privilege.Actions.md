@@ -29,11 +29,11 @@ On this page
 
 Privilege actions define the operations a user can perform on a [resource](https://docs.mongodb.com/manual/reference/resource-document/#resource-document). A MongoDB [privilege](https://docs.mongodb.com/manual/core/authorization/#privileges) comprises a [resource](https://docs.mongodb.com/manual/reference/resource-document/#resource-document) and the permitted actions. This page lists available actions grouped by common purpose.
 
-权限操作定义了用户可以对[资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-document)做的操作。一个MongoDB[权限](https://docs.mongodb.com/manual/core/authorization/#privileges)包括[资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-document)和允许的操作。本页面列出了按通用目的分组的可用操作。
+权限操作定义了用户可以对[资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-document)做的操作。一个 MongoDB [权限](https://docs.mongodb.com/manual/core/authorization/#privileges)包括[资源](https://docs.mongodb.com/manual/reference/resource-document/#resource-document)和允许的操作。本页面列出了按通用目的分组的可用操作。
 
 MongoDB provides built-in roles with pre-defined pairings of resources and permitted actions. For lists of the actions granted, see [Built-In Roles](https://docs.mongodb.com/manual/reference/built-in-roles/). To define custom roles, see [Create a User-Defined Role](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/#create-user-defined-role).
 
-MongoDB为内置角色提供了预定义的资源和允许的操作。有关授予的操作的列表，请参阅 [内置角色](https://docs.mongodb.com/manual/reference/built-in-roles/)。要定义自定义角色，请参阅 [创建用户定义角色](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/#create-user-defined-role)。
+MongoDB 为内置角色提供了预定义的资源和允许的操作。有关授予的操作的列表，请参阅 [内置角色](https://docs.mongodb.com/manual/reference/built-in-roles/)。要定义自定义角色，请参阅 [创建用户定义角色](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/#create-user-defined-role)。
 
 ## Query and Write Actions
 
@@ -41,9 +41,9 @@ MongoDB为内置角色提供了预定义的资源和允许的操作。有关授�
 
 - `find`
 
-   User can perform the following commands, and their equivalent helper methods:
+  User can perform the following commands, and their equivalent helper methods:
 
-  用户可以操作一下命令行，以及和他们等效的帮助方法：
+  用户可以操作以下命令行，以及和他们等效的帮助方法：
 
   [`aggregate`](https://docs.mongodb.com/manual/reference/command/aggregate/#dbcmd.aggregate) for all [pipeline operations](https://docs.mongodb.com/manual/reference/operator/aggregation/) **except** [`$collStats`](https://docs.mongodb.com/manual/reference/operator/aggregation/collStats/#pipe._S_collStats), [`$out`](https://docs.mongodb.com/manual/reference/operator/aggregation/out/#pipe._S_out), and [`$indexStats`](https://docs.mongodb.com/manual/reference/operator/aggregation/indexStats/#pipe._S_indexStats).
 
@@ -55,17 +55,35 @@ MongoDB为内置角色提供了预定义的资源和允许的操作。有关授�
 
   [`count`](https://docs.mongodb.com/manual/reference/command/count/#dbcmd.count)
 
+  [`统计`](https://docs.mongodb.com/manual/reference/command/count/#dbcmd.count)
+
   [`dataSize`](https://docs.mongodb.com/manual/reference/command/dataSize/#dbcmd.dataSize)
+
+  [`数据大小`](https://docs.mongodb.com/manual/reference/command/dataSize/#dbcmd.dataSize)
+
   [`distinct`](https://docs.mongodb.com/manual/reference/command/distinct/#dbcmd.distinct)
+
+  [` 取唯一值 `](https://docs.mongodb.com/manual/reference/command/distinct/#dbcmd.distinct)
+
   [`filemd5`](https://docs.mongodb.com/manual/reference/command/filemd5/#dbcmd.filemd5)
+
+  [`文件 md5`](https://docs.mongodb.com/manual/reference/command/filemd5/#dbcmd.filemd5)
+
   [`find`](https://docs.mongodb.com/manual/reference/command/find/#dbcmd.find)
+
+  [` 查找 `](https://docs.mongodb.com/manual/reference/command/find/#dbcmd.find)
+
   [`geoSearch`](https://docs.mongodb.com/manual/reference/command/geoSearch/#dbcmd.geoSearch)
 
   [`地理位置查找`](https://docs.mongodb.com/manual/reference/command/geoSearch/#dbcmd.geoSearch)
 
   [`getLastError`](https://docs.mongodb.com/manual/reference/command/getLastError/#dbcmd.getLastError)
 
+  [`获得最后错误`](https://docs.mongodb.com/manual/reference/command/getLastError/#dbcmd.getLastError)
+
   [`getMore`](https://docs.mongodb.com/manual/reference/command/getMore/#dbcmd.getMore)
+
+  [`获得更多`](https://docs.mongodb.com/manual/reference/command/getMore/#dbcmd.getMore)
 
   [`killCursors`](https://docs.mongodb.com/manual/reference/command/killCursors/#dbcmd.killCursors), provided that the cursor is associated with a currently authenticated user.
 
@@ -73,16 +91,22 @@ MongoDB为内置角色提供了预定义的资源和允许的操作。有关授�
 
   [`listCollections`](https://docs.mongodb.com/manual/reference/command/listCollections/#dbcmd.listCollections)
 
+  [`列出所有集合`](https://docs.mongodb.com/manual/reference/command/listCollections/#dbcmd.listCollections)
+
   [`listIndexes`](https://docs.mongodb.com/manual/reference/command/listIndexes/#dbcmd.listIndexes)
+
+  [`列出索引`](https://docs.mongodb.com/manual/reference/command/listIndexes/#dbcmd.listIndexes)
+
   [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) with the `{out: inline}` option. 
 
-  [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce)和选项 `{out: inline}一起使用。
+  [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce)和选项 `{out: inline}` 一起使用。
 
   [`resetError`](https://docs.mongodb.com/manual/reference/command/resetError/#dbcmd.resetError)
+  [` 重置错误 `](https://docs.mongodb.com/manual/reference/command/resetError/#dbcmd.resetError)
 
   Required for the query portion of the [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) command and [`db.collection.mapReduce`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce) helper method when [outputting to a collection](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd).
 
-  [输出到集合](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd)时，[`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce)命令和 [`db.collection.mapReduce`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce)辅助方法的查询部分是必需的。
+  [输出到集合](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd)时，[`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) 命令和 [`db.collection.mapReduce`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce) 辅助方法的查询部分是必需的。
 
   Required for the query portion of the [`findAndModify`](https://docs.mongodb.com/manual/reference/command/findAndModify/#dbcmd.findAndModify) command and [`db.collection.findAndModify`](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/#db.collection.findAndModify) helper method.
 
@@ -96,25 +120,23 @@ MongoDB为内置角色提供了预定义的资源和允许的操作。有关授�
 
   If the user does not have the [`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) privilege action, users can run the [`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) command to return a list of databases for which the user has privileges (including databases for which the user has privileges on specific collections) if the command is run with `authorizedDatabases` option unspecified or set to `true`.
 
-  对于MongoDB 4.0.6+：
+  对于 MongoDB 4.0.6+：
 
-  如果用户没有[`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) 特权操作， 用户运行[`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) 命令行时`authorizedDatabases`选项未指定或设置为true，则用户可以运行该命令以返回该用户具有权限的数据库的列表（包括该用户对其特定集合具有特权的数据库）。
+  如果用户没有[`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) 特权操作， 用户运行[`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) 命令行时`authorizedDatabases`选项未指定或设置为 true，则用户可以运行该命令以返回该用户具有权限的数据库的列表（包括该用户对其特定集合具有特权的数据库）。
 
   For MongoDB 4.0.5:
 
   If the user does not have the [`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) privilege action, users can run the [`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) command to return a list of databases for which the user has the [`find`](https://docs.mongodb.com/manual/reference/privilege-actions/#find) action privilege if the command is run with `authorizedDatabases` option unspecified or set to `true`.
 
-  对于MongoDB 4.0.5:
+  对于 MongoDB 4.0.5:
 
-  如果用户没有[`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) 特权操作，在authorizedDatabases未指定或设置为true的情况下运行[`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) 命令时，用户可以运行该命令以返回用户对其具有[`find`](https://docs.mongodb.com/manual/reference/privilege-actions/#find)操作权限的数据库列表 。
+  如果用户没有[`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) 特权操作，在authorizedDatabases未指定或设置为true的情况下运行 [`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) 命令时，用户可以运行该命令以返回用户对其具有[`find`](https://docs.mongodb.com/manual/reference/privilege-actions/#find)操作权限的数据库列表 。
 
 - For MongoDB 4.0.0-4.0.4:
 
 - If the user does not have the [`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) privilege action, users can run the [`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) command to return a list of databases for which the user has the [`find`](https://docs.mongodb.com/manual/reference/privilege-actions/#find) action privilege.Apply this action to database or collection resources.
 
 - 对于MongoDB 4.0.0-4.0.4:
-
-- If the user does not have the [`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) privilege action, users can run the [`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) command to return a list of databases for which the user has the [`find`](https://docs.mongodb.com/manual/reference/privilege-actions/#find) action privilege.Apply this action to database or collection resources.
 
 - 如果用户没有[`listDatabases`](https://docs.mongodb.com/manual/reference/privilege-actions/#listDatabases) 特权操作，则用户可以运行[`listDatabases`](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) 命令以返回该用户对其具有[`find`](https://docs.mongodb.com/manual/reference/privilege-actions/#find)操作权限的数据库列表 。
 
@@ -130,7 +152,7 @@ MongoDB为内置角色提供了预定义的资源和允许的操作。有关授�
 
   Required for the output portion of the [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) command and [`db.collection.mapReduce()`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce) helper method when [outputting to a collection](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd).
 
-  当要[输出到集合](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd)时，[`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) 命令和 [`db.collection.mapReduce()`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce)方法的output是必须的。
+  当要[输出到集合](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd)时，[`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) 命令和 [`db.collection.mapReduce()`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce)方法的 output 部分是必须的。
 
   Required for the [`aggregate`](https://docs.mongodb.com/manual/reference/command/aggregate/#dbcmd.aggregate) command and [`db.collection.aggregate()`](https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/#db.collection.aggregate) helper method when using the [`$out`](https://docs.mongodb.com/manual/reference/operator/aggregation/out/#pipe._S_out) pipeline operator.
 
@@ -146,9 +168,15 @@ MongoDB为内置角色提供了预定义的资源和允许的操作。有关授�
 
   [`cloneCollection`](https://docs.mongodb.com/manual/reference/command/cloneCollection/#dbcmd.cloneCollection)
 
+  [`克隆集合`](https://docs.mongodb.com/manual/reference/command/cloneCollection/#dbcmd.cloneCollection)
+
   [`cloneCollectionAsCapped`](https://docs.mongodb.com/manual/reference/command/cloneCollectionAsCapped/#dbcmd.cloneCollectionAsCapped)
 
+  [`克隆集合为上限集合`](https://docs.mongodb.com/manual/reference/command/cloneCollectionAsCapped/#dbcmd.cloneCollectionAsCapped)
+
   [`renameCollection`](https://docs.mongodb.com/manual/reference/command/renameCollection/#dbcmd.renameCollection)
+
+  [`重命名集合`](https://docs.mongodb.com/manual/reference/command/renameCollection/#dbcmd.renameCollection)
 
   Apply this action to database or collection resources.
 
@@ -158,47 +186,51 @@ MongoDB为内置角色提供了预定义的资源和允许的操作。有关授�
 
   User can perform the [`delete`](https://docs.mongodb.com/manual/reference/command/delete/#dbcmd.delete) command and equivalent helper method.Required for the write portion of the [`findAndModify`](https://docs.mongodb.com/manual/reference/command/findAndModify/#dbcmd.findAndModify) command and [`db.collection.findAndModify()`](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/#db.collection.findAndModify) method.Required for the [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) command and [`db.collection.mapReduce()`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce) helper method when you specify the `replace` action when [outputting to a collection](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd).Required for the [`aggregate`](https://docs.mongodb.com/manual/reference/command/aggregate/#dbcmd.aggregate) command and [`db.collection.aggregate()`](https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/#db.collection.aggregate) helper method when using the [`$out`](https://docs.mongodb.com/manual/reference/operator/aggregation/out/#pipe._S_out) pipeline operator.Apply this action to database or collection resources.
 
-  用户可以执行[`delete`](https://docs.mongodb.com/manual/reference/command/delete/#dbcmd.delete)命令和等效的辅助方法。
-
-  [`findAndModify`](https://docs.mongodb.com/manual/reference/command/findAndModify/#dbcmd.findAndModify) 命令和[`db.collection.findAndModify()`](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/#db.collection.findAndModify)方法的写部分必需。
-
-  当您指定[输出到集合](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd)时的操作时，该[`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce)命令和 [`db.collection.mapReduce()`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce)辅助方法是必需的。`replace`
-
-  使用管道运算符时，[`aggregate`](https://docs.mongodb.com/manual/reference/command/aggregate/#dbcmd.aggregate)命令和 [`db.collection.aggregate()`](https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/#db.collection.aggregate)帮助程序方法 必需[`$out`](https://docs.mongodb.com/manual/reference/operator/aggregation/out/#pipe._S_out)。
-
-  将此操作应用于数据库或集合资源。
+  用户可以执行 [`delete`](https://docs.mongodb.com/manual/reference/command/delete/#dbcmd.delete) 命令和等效的辅助方法。[`findAndModify`](https://docs.mongodb.com/manual/reference/command/findAndModify/#dbcmd.findAndModify) 命令和[`db.collection.findAndModify()`](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/#db.collection.findAndModify)方法的 write 部分必需。当您指定`replace` [输出到集合](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd)时，该 [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) 命令和 [`db.collection.mapReduce()`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce)辅助方法是必需的。使用 [`$out`](https://docs.mongodb.com/manual/reference/operator/aggregation/out/#pipe._S_out) 管道运算符时，[`aggregate `](https://docs.mongodb.com/manual/reference/command/aggregate/#dbcmd.aggregate)命令和 [`db.collection.aggregate()`](https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/#db.collection.aggregate) 帮助程序方法是必需的。将此操作应用于数据库或集合资源。
 
 - `update`
 
   User can perform the [`update`](https://docs.mongodb.com/manual/reference/command/update/#dbcmd.update) command and equivalent helper methods.Required for the [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) command and [`db.collection.mapReduce()`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce) helper method when [outputting to a collection](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd) without specifying the `replace` action.Required for the [`findAndModify`](https://docs.mongodb.com/manual/reference/command/findAndModify/#dbcmd.findAndModify) command and [`db.collection.findAndModify()`](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/#db.collection.findAndModify) helper method.Apply this action to database or collection resources.
 
-  用户可以执行[`update`](https://docs.mongodb.com/manual/reference/command/update/#dbcmd.update)命令和等效的帮助程序方法。
-
-  在 不指定操作的情况下[输出到集合](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd)时，[`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce)command and [`db.collection.mapReduce()`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce)helper方法必需 。`replace`
-
-  [`findAndModify`](https://docs.mongodb.com/manual/reference/command/findAndModify/#dbcmd.findAndModify)命令和 [`db.collection.findAndModify()`](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/#db.collection.findAndModify)帮助程序方法必需。
+  用户可以执行[`update`](https://docs.mongodb.com/manual/reference/command/update/#dbcmd.update) 命令和等效的帮助方法。在不指定`replace`情况下操作[输出到集合](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#mapreduce-out-mtd)时，[`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) 命令和 [`db.collection.mapReduce()`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce)帮助方法是必需的 。[`findAndModify`](https://docs.mongodb.com/manual/reference/command/findAndModify/#dbcmd.findAndModify)命令和 [`db.collection.findAndModify()`](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/#db.collection.findAndModify)帮助程序方法必需。
 
   将此操作应用于数据库或集合资源。
 
 - `bypassDocumentValidation`
 
-  *New in version 3.2.*Users can bypass [document validation](https://docs.mongodb.com/manual/core/schema-validation/) on commands and methods that support the `bypassDocumentValidation` option. The following commands and their equivalent methods support bypassing document validation:
+  *New in version 3.2.*
+
+  Users can bypass [document validation](https://docs.mongodb.com/manual/core/schema-validation/) on commands and methods that support the `bypassDocumentValidation` option. The following commands and their equivalent methods support bypassing document validation:
+
+  *3.2版新功能* 。
 
   用户可以绕过支持该选项的命令和方法的[文档验证](https://docs.mongodb.com/manual/core/schema-validation/)`bypassDocumentValidation`。以下命令及其等效方法支持绕过文档验证：
 
   [`aggregate`](https://docs.mongodb.com/manual/reference/command/aggregate/#dbcmd.aggregate)
 
+  [`管道操作`](https://docs.mongodb.com/manual/reference/command/aggregate/#dbcmd.aggregate)
+
   [`applyOps`](https://docs.mongodb.com/manual/reference/command/applyOps/#dbcmd.applyOps)
 
-  [`cloneCollection`](https://docs.mongodb.com/manual/reference/command/cloneCollection/#dbcmd.cloneCollection) on the *destination* collection 在*目的地*集合上
+  [` 应用操作 `](https://docs.mongodb.com/manual/reference/command/applyOps/#dbcmd.applyOps)
+
+  [`cloneCollection`](https://docs.mongodb.com/manual/reference/command/cloneCollection/#dbcmd.cloneCollection) on the *destination* collection 
+
+  在*目的地*集合上[` 克隆集合 `](https://docs.mongodb.com/manual/reference/command/cloneCollection/#dbcmd.cloneCollection)
 
   [`findAndModify`](https://docs.mongodb.com/manual/reference/command/findAndModify/#dbcmd.findAndModify)
 
+  [`查找并修改`](https://docs.mongodb.com/manual/reference/command/findAndModify/#dbcmd.findAndModify)
+
   [`insert`](https://docs.mongodb.com/manual/reference/command/insert/#dbcmd.insert)
+
+  [`插入`](https://docs.mongodb.com/manual/reference/command/insert/#dbcmd.insert)
 
   [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce)
 
   [`update`](https://docs.mongodb.com/manual/reference/command/update/#dbcmd.update)
+
+  [`更新`](https://docs.mongodb.com/manual/reference/command/update/#dbcmd.update)
 
   Apply this action to database or collection resources.
 
@@ -216,24 +248,34 @@ MongoDB为内置角色提供了预定义的资源和允许的操作。有关授�
 
   [`find`](https://docs.mongodb.com/manual/reference/command/find/#dbcmd.find)
 
+  [`查找`](https://docs.mongodb.com/manual/reference/command/find/#dbcmd.find)
+
   [`listIndexes`](https://docs.mongodb.com/manual/reference/command/listIndexes/#dbcmd.listIndexes)
+
+  [`列出索引`](https://docs.mongodb.com/manual/reference/command/listIndexes/#dbcmd.listIndexes)
 
   For example, this privilege authorizes a user to run the following command which executes a [`find`](https://docs.mongodb.com/manual/reference/command/find/#dbcmd.find) command on a collection with the given UUID. In order to be successful, this operation also requires that the user is authorized to execute the `find` command on the collection namespace corresponding to the given UUID.
 
+  copy
+
+  ```
+db.runCommand({find: UUID("123e4567-e89b-12d3-a456-426655440000")})
+  ```
+  
+  For more information on collection UUIDs, see [Collections](https://docs.mongodb.com/manual/core/databases-and-collections/#collections).Apply this action to the `cluster` resource.
+
   例如，此特权授权用户运行以下命令，该[`find`](https://docs.mongodb.com/manual/reference/command/find/#dbcmd.find)命令对具有给定UUID的集合执行命令。为了获得成功，此操作还需要授权用户`find`在与给定UUID对应的集合名称空间上执行 命令。
 
-  copycopied`db.runCommand({find: UUID("123e4567-e89b-12d3-a456-426655440000")}) `For more information on collection UUIDs, see [Collections](https://docs.mongodb.com/manual/core/databases-and-collections/#collections).Apply this action to the `cluster` resource.
-
   例如，此特权授权用户运行以下命令，该[`find`](https://docs.mongodb.com/manual/reference/command/find/#dbcmd.find)命令对具有给定UUID的集合执行命令。为了获得成功，此操作还需要授权用户`find`在与给定UUID对应的集合名称空间上执行 命令。
-
+  
   复制
-
+  
   ```
-  db 。runCommand （{ 找到： UUID （“ 123e4567-e89b-12d3-a456-426655440000” ）}）
+  db.runCommand({ find:UUID(“123e4567-e89b-12d3-a456-426655440000”)})
   ```
-
+  
   有关集合UUID的更多信息，请参见 [集合](https://docs.mongodb.com/manual/core/databases-and-collections/#collections)。
-
+  
   将此操作应用于`cluster`资源。
 
 ## Database Management Actions 
