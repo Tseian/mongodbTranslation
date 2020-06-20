@@ -834,9 +834,9 @@ db.runCommand({find: UUID("123e4567-e89b-12d3-a456-426655440000")})
 
   *3.6版的新功能。*
 
-  用户可以[`killAllSessionsByPattern`](https://docs.mongodb.com/manual/reference/command/killAllSessionsByPattern/#dbcmd.killAllSessionsByPattern)使用`users`和`roles`模式执行命令。将此操作应用于 `cluster`资源。
+  用户可以使用`users`和`roles`模式执行[`killAllSessionsByPattern`](https://docs.mongodb.com/manual/reference/command/killAllSessionsByPattern/#dbcmd.killAllSessionsByPattern)命令。将此操作应用于 `cluster`资源。
 
-  要运行[`killAllSessionsByPattern`](https://docs.mongodb.com/manual/reference/command/killAllSessionsByPattern/#dbcmd.killAllSessionsByPattern)命令，用户还必须[`killAnySession`](https://docs.mongodb.com/manual/reference/privilege-actions/#killAnySession)对集群资源具有特权。
+  要运行[`killAllSessionsByPattern`](https://docs.mongodb.com/manual/reference/command/killAllSessionsByPattern/#dbcmd.killAllSessionsByPattern)命令，用户还必须对集群资源具[`killAnySession `](https://docs.mongodb.com/manual/reference/privilege-actions/#killAnySession)特权。
 
 - `listSessions`
 
@@ -846,7 +846,7 @@ db.runCommand({find: UUID("123e4567-e89b-12d3-a456-426655440000")})
 
   *3.6版的新功能。*
 
-  用户可以为所有用户或指定用户执行[`$listSessions`](https://docs.mongodb.com/manual/reference/operator/aggregation/listSessions/#pipe._S_listSessions)一项或 [`$listLocalSessions`](https://docs.mongodb.com/manual/reference/operator/aggregation/listLocalSessions/#pipe._S_listLocalSessions)多项操作。将此操作应用于`cluster`资源。
+  用户可以为所有用户或指定用户执行[`$listSessions`](https://docs.mongodb.com/manual/reference/operator/aggregation/listSessions/#pipe._S_listSessions)或 [`$listLocalSessions`](https://docs.mongodb.com/manual/reference/operator/aggregation/listLocalSessions/#pipe._S_listLocalSessions)操作。将此操作应用于`cluster`资源。
 
 - `killAnySession`
 
